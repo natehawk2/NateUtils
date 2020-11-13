@@ -1,0 +1,24 @@
+{
+    "id": "FC7EF1CC",
+    "path": "~/NateUtils/man/pi.object.Rd",
+    "project_path": "man/pi.object.Rd",
+    "type": "r_doc",
+    "hash": "1497972174",
+    "contents": "",
+    "dirty": false,
+    "created": 1605283760767.0,
+    "source_on_save": false,
+    "relative_order": 5,
+    "properties": {},
+    "folds": "",
+    "lastKnownWriteTime": 1605022114,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1605022114,
+    "read_only": true,
+    "read_only_alternatives": [
+        "R/pi.object.R",
+        "R/pi.object1.R"
+    ]
+}

@@ -1,0 +1,39 @@
+#' pi.object
+#' @param df Dataframe
+#' @return Object suitable for IBM Personality Insights pull
+#' @import utils
+#' @export
+
+pi.object <- function(df){
+  content <- "content"
+  qj <- "\""
+  space <- " "
+  comma <- ","
+  sqj <- "\'"
+  capture.output(as.character(
+    cat("{"),
+    #cat("\n"),
+    cat(qj,"contentItems", qj , ":", " [", sep = ""),
+    for(i in 1:nrow(df)){
+      if(i !=1){
+        cat(",")
+      }
+      cat("{")
+      #cat("\n")
+      cat(qj,content,qj,": ", qj, as.character(df$clean.emoji.text[i]), qj, comma, sep = "")
+      #cat("\n")
+      cat(qj, "contenttype", qj, ":", space, qj, "text/plain", qj, comma, sep = "")
+      #cat("\n")
+      cat(qj, "created", qj, ": ", df$created_at[i], comma, sep = "" )
+      #cat("\n")
+      cat(qj, "id", qj, ": ",qj, df$user_id[i], qj, comma, sep = "")
+      #cat("\n")
+      cat(qj, "language", qj, ": ", qj, df$lang[i], qj, sep = "")
+      #cat("\n")
+      cat("}")
+    },
+    cat("]}"),
+    cat(sqj),
+    cat(")")
+  ))
+}

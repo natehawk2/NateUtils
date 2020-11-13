@@ -1,0 +1,119 @@
+#' pi.object
+#' @param df Dataframe
+#' @return Object suitable for IBM Personality Insights pull
+#' @export
+#' @examples
+#' randomLetter(1) #selecct 1 random letter
+#' randomLetter(2) #select 2 random letters
+
+content <- "content"
+qj <- "\""
+space <- " "
+comma <- ","
+sqj <- "\'"
+
+
+
+# cat.content <- function (df){
+#   cat(qj,content,qj,": ", qj, as.character(df$clean.emoji.text[i]), qj, comma, sep = "")
+# }
+#
+#
+# cat.contenttype<- function (){
+#   cat(qj, "contenttype", qj, ":", space, qj, "text/plain", qj, comma, sep = "")
+# }
+#
+#
+# cat.created <- function(df){
+#   cat(qj, "created", qj, ": ", df$created_at[i], comma, sep = "" )
+# }
+#
+#
+# cat.id <- function(df){
+#   cat(qj, "id", qj, ": ",qj, df$user_id[i], qj, comma, sep = "")
+# }
+#
+#
+# cat.language <- function(df){
+#   cat(qj, "language", qj, ": ", qj, df$lang[i], qj, sep = "")
+# }
+
+
+
+# cat.all <- function(df){
+#   if(i !=1){
+#     cat(",")
+#   }
+#   cat("{")
+#   #cat("\n")
+#   cat.content(df)
+#   #cat("\n")
+#   cat.contenttype()
+#   #cat("\n")
+#   cat.created(df)
+#   #cat("\n")
+#   cat.id(df)
+#   #cat("\n")
+#   cat.language(df)
+#   #cat("\n")
+#   cat("}")
+# }
+
+
+
+
+
+# first.part <- function(){
+#   cat("{")
+#   #cat("\n")
+#   cat(qj,"contentItems", qj , ":", " [", sep = "")
+# }
+#
+#
+# end.part <- function(){
+#   cat("]}")
+#   cat(sqj)
+#   cat(")")
+# }
+# end.part()
+#
+# capture.output(for(i in 1:5){
+#   cat.all(stephtweets)
+# })
+# 5. Make stephtweets into .json
+
+pi.object <- function(df){
+  capture.output(as.character(
+  cat("{")
+  #cat("\n")
+  cat(qj,"contentItems", qj , ":", " [", sep = ""),
+  for(i in 1:nrow(df)){
+    if(i !=1){
+      cat(",")
+    }
+    cat("{")
+    #cat("\n")
+    cat(qj,content,qj,": ", qj, as.character(df$clean.emoji.text[i]), qj, comma, sep = "")
+    #cat("\n")
+    cat(qj, "contenttype", qj, ":", space, qj, "text/plain", qj, comma, sep = "")
+    #cat("\n")
+    cat(qj, "created", qj, ": ", df$created_at[i], comma, sep = "" )
+    #cat("\n")
+    cat(qj, "id", qj, ": ",qj, df$user_id[i], qj, comma, sep = "")
+    #cat("\n")
+    cat(qj, "language", qj, ": ", qj, df$lang[i], qj, sep = "")
+    #cat("\n")
+    cat("}")
+  },
+  cat("]}")
+  cat(sqj)
+  cat(")")
+))
+}
+
+# install.packages("installr")
+# library(installr)
+# install.Rtools()
+
+library(roxygen2)
+library(devtools)
